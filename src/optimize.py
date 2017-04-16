@@ -80,7 +80,7 @@ def optimize(content_targets, style_target, content_weight, style_weight,
             size = height * width * filters
             feats = tf.reshape(layer, (bs, height * width, filters))
             feats_T = tf.transpose(feats, perm=[0,2,1])
-            grams = tf.batch_matmul(feats_T, feats) / size
+            grams = tf.matmul(feats_T, feats) / size
             style_gram = style_features[style_layer]
             style_losses.append(2 * tf.nn.l2_loss(grams - style_gram)/style_gram.size)
 
@@ -97,7 +97,7 @@ def optimize(content_targets, style_target, content_weight, style_weight,
 
         # overall loss
         train_step = tf.train.AdamOptimizer(learning_rate).minimize(loss)
-        sess.run(tf.initialize_all_variables())
+        sess.run(tf.global_variables_initializer())
 
         # If base model file is present, load that in to the session
         if base_model_path:

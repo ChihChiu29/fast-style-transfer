@@ -1,0 +1,1 @@
+python style.py --style style/wave.jpg --checkpoint-dir checkpoint --content-weight 1.5e1   --checkpoint-iterations 1000   --batch-size 20
