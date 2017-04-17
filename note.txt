@@ -1,6 +1,9 @@
 # Train locally
 python style.py --style style/wave.jpg --checkpoint-dir checkpoint --content-weight 1.5e1   --checkpoint-iterations 1000   --batch-size 20
 
+# Train on Floyd
+floyd run --gpu --env keras:py2 --data jq4ZXUCSVer4t65rWeyieG "mkdir checkpoint; python style.py --style style/cell_shading.jpg  --checkpoint-dir checkpoint"
+
 # Evaluate locally
 for style in la_muse rain_princess scream udnie wave wreck; do echo ${style}; done
 
