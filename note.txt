@@ -1,1 +1,9 @@
+# Train locally
 python style.py --style style/wave.jpg --checkpoint-dir checkpoint --content-weight 1.5e1   --checkpoint-iterations 1000   --batch-size 20
+
+# Evaluate locally
+for style in la_muse rain_princess scream udnie wave wreck; do echo ${style}; done
+
+python evaluate.py --checkpoint models/scream.ckpt --in-path icon_sets --out-path transferred_icon_sets/scream/ --allow-different-dimensions
+
+for style in la_muse rain_princess scream udnie wave wreck; do mkdir transferred_icon_sets/${style}; python evaluate.py --checkpoint models/${style}.ckpt --in-path icon_sets --out-path transferred_icon_sets/${style}/ --allow-different-dimension; done
