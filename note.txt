@@ -6,4 +6,4 @@ for style in la_muse rain_princess scream udnie wave wreck; do echo ${style}; do
 
 python evaluate.py --checkpoint models/scream.ckpt --in-path icon_sets --out-path transferred_icon_sets/scream/ --allow-different-dimensions
 
-for style in la_muse rain_princess scream udnie wave wreck; do python evaluate.py --checkpoint models/${style}.ckpt --in-path icon_sets --out-path transferred_icon_sets/${style}/ --allow-different-dimension; done
+for style in la_muse rain_princess scream udnie wave wreck; do mkdir transferred_icon_sets/${style}; python evaluate.py --checkpoint models/${style}.ckpt --in-path icon_sets --out-path transferred_icon_sets/${style}/ --allow-different-dimension; done
